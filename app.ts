@@ -1,44 +1,34 @@
-// abstract class
- abstract class Vehicle{
-  public report(){
-    console.log(`Year: ${this.year}`);
-    console.log(`Make: ${this.make}`);
-    console.log(`Model: ${this.model}`);
-  }
-  constructor(public year: number, public make: string, public model: string){}
+interface IProduct {
+    name: string;
+    price: number;
 }
 
-//extension of abstact class
- class Car extends Vehicle{
-  constructor(year: number, make: string, model: string){
-    super(year, make, model);
-  }
+class Fruit implements IProduct {
+    constructor(public name: string, public price: number, public color: string) { }
 }
 
-class Truck extends Vehicle{
-  public report(){
-    super.report();
-    console.log(`Towing Capacity: ${this.towingCapacity}`);
-  }
-  constructor(year: number, make: string, model: string, public towingCapacity: number){
-    super(year, make, model);
-  }
+class Telephone implements IProduct {
+    constructor(public name: string, public price: number, public loudness: number) { }
 }
 
-class Motorcycle extends Vehicle{
-  public report(){
-    super.report();
-    console.log(`Horsepower: ${this.horsePower}`);
-  }
-  constructor(year: number, make: string, model: string, public horsePower: number){
-    super(year, make, model);
-  }
+let fruit1 = new Fruit("orange", .50, "orange");
+let fruit2 = new Fruit("apple", .75, "red");
+let fruit3 = new Fruit("lime", 1, "green");
+
+let phone1 = new Telephone("iPhone", 699, 7);
+let phone2 = new Telephone("android", 649, 8);
+
+let inventory = [];
+inventory[0] = fruit1;
+inventory[1] = fruit2;
+inventory[2] = fruit3;
+inventory[3] = phone1;
+inventory[4] = phone2;
+
+function showInventory(product: IProduct) {
+    console.log("Product: " + product.name + " Price: " + product.price);
 }
 
-let newCar = new Car(2015, "Toyota", "Camry");
-let newTruck = new Truck(2016, "Toyota", "Tundra", 400);
-let newMotorcycle = new Motorcycle(2014, "Honda", "CBR", 250);
-
-newCar.report();
-newTruck.report();
-newMotorcycle.report();
+for (let i=0; i < inventory.length; i++){
+  showInventory(inventory[i]);
+}

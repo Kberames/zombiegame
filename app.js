@@ -1,57 +1,33 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Vehicle = (function () {
-    function Vehicle(year, make, model) {
-        this.year = year;
-        this.make = make;
-        this.model = model;
+var Fruit = (function () {
+    function Fruit(name, price, color) {
+        this.name = name;
+        this.price = price;
+        this.color = color;
     }
-    Vehicle.prototype.report = function () {
-        console.log("Year: " + this.year);
-        console.log("Make: " + this.make);
-        console.log("Model: " + this.model);
-    };
-    return Vehicle;
+    return Fruit;
 }());
-var Car = (function (_super) {
-    __extends(Car, _super);
-    function Car(year, make, model) {
-        return _super.call(this, year, make, model) || this;
+var Telephone = (function () {
+    function Telephone(name, price, loudness) {
+        this.name = name;
+        this.price = price;
+        this.loudness = loudness;
     }
-    return Car;
-}(Vehicle));
-var Truck = (function (_super) {
-    __extends(Truck, _super);
-    function Truck(year, make, model, towingCapacity) {
-        var _this = _super.call(this, year, make, model) || this;
-        _this.towingCapacity = towingCapacity;
-        return _this;
-    }
-    Truck.prototype.report = function () {
-        _super.prototype.report.call(this);
-        console.log("Towing Capacity: " + this.towingCapacity);
-    };
-    return Truck;
-}(Vehicle));
-var Motorcycle = (function (_super) {
-    __extends(Motorcycle, _super);
-    function Motorcycle(year, make, model, horsePower) {
-        var _this = _super.call(this, year, make, model) || this;
-        _this.horsePower = horsePower;
-        return _this;
-    }
-    Motorcycle.prototype.report = function () {
-        _super.prototype.report.call(this);
-        console.log("Horsepower: " + this.horsePower);
-    };
-    return Motorcycle;
-}(Vehicle));
-var newCar = new Car(2015, "Toyota", "Camry");
-var newTruck = new Truck(2016, "Toyota", "Tundra", 400);
-var newMotorcycle = new Motorcycle(2014, "Honda", "CBR", 250);
-newCar.report();
-newTruck.report();
-newMotorcycle.report();
+    return Telephone;
+}());
+var fruit1 = new Fruit("orange", .50, "orange");
+var fruit2 = new Fruit("apple", .75, "red");
+var fruit3 = new Fruit("lime", 1, "green");
+var phone1 = new Telephone("iPhone", 699, 7);
+var phone2 = new Telephone("android", 649, 8);
+var inventory = [];
+inventory[0] = fruit1;
+inventory[1] = fruit2;
+inventory[2] = fruit3;
+inventory[3] = phone1;
+inventory[4] = phone2;
+function showInventory(product) {
+    console.log("Product: " + product.name + " Price: " + product.price);
+}
+for (var i = 0; i < inventory.length; i++) {
+    showInventory(inventory[i]);
+}
